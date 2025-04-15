@@ -12,7 +12,7 @@ This is a specialized application designed for managing the testing and quality 
 - **Data Access:**
   - Option 1: In-memory repository (for simple setups or testing)
   - Option 2: EF Core with SQLite (for persistent data)
-- **Optional Desktop Client:** WPF (.NET 8.0 recommended)
+- **Desktop Client:** WPF (.NET 8.0 recommended)
 - **API Documentation:** Swagger
 
 ## Getting Started
