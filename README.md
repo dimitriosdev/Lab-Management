@@ -20,11 +20,9 @@ This is a specialized application designed for managing the testing and quality 
 1.  **Clone the Repository:**
 
     ```bash
-    git clone [repository_url]
+    git clone [https://github.com/dimitriosdev/Lab-Management]
     cd LabManagementApp
     ```
-
-    _(Replace `[repository_url]` with the actual URL of your repository)_
 
 2.  **Navigate to the Solution Directory:**
 
