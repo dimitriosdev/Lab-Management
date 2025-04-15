@@ -1,6 +1,0 @@
-@LabManagementApp.API_HostAddress = http://localhost:5288
-
-GET {{LabManagementApp.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

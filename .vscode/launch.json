@@ -1,0 +1,19 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug WPF Project",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "run-api",
+      "program": "${workspaceFolder}/LabManagementApp.UI.WPF/bin/Debug/net9.0-windows/LabManagementApp.UI.WPF.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/LabManagementApp.UI.WPF",
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ using LabManagementApp.Infrastructure.Contexts;
 using LabManagementApp.Infrastructure.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace LabManagementApp.API.Controllers
 {
@@ -10,16 +11,19 @@ namespace LabManagementApp.API.Controllers
   public class ProbeController : ControllerBase
   {
     private readonly LabManagementDbContext _context;
+    private readonly ILogger<ProbeController> _logger;
 
-    public ProbeController(LabManagementDbContext context)
+    public ProbeController(LabManagementDbContext context, ILogger<ProbeController> logger)
     {
       _context = context;
+      _logger = logger;
     }
 
     // GET: api/Probe
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Probe>>> GetProbes()
     {
+      _logger.LogInformation("Fetching all probes.");
       return await _context.Probes.ToListAsync();
     }
 
@@ -27,10 +31,12 @@ namespace LabManagementApp.API.Controllers
     [HttpGet("{id}")]
     public async Task<ActionResult<Probe>> GetProbe(Guid id)
     {
+      _logger.LogInformation("Fetching probe with ID: {ProbeID}", id);
       var probe = await _context.Probes.FindAsync(id);
 
       if (probe == null)
       {
+        _logger.LogWarning("Probe with ID: {ProbeID} not found.", id);
         return NotFound();
       }
 

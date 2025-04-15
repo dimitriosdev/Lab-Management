@@ -2,6 +2,7 @@ using LabManagementApp.Infrastructure.Contexts;
 using LabManagementApp.Infrastructure.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace LabManagementApp.API.Controllers
 {
@@ -10,16 +11,19 @@ namespace LabManagementApp.API.Controllers
   public class TestSessionController : ControllerBase
   {
     private readonly LabManagementDbContext _context;
+    private readonly ILogger<TestSessionController> _logger;
 
-    public TestSessionController(LabManagementDbContext context)
+    public TestSessionController(LabManagementDbContext context, ILogger<TestSessionController> logger)
     {
       _context = context;
+      _logger = logger;
     }
 
     // GET: api/TestSession
     [HttpGet]
     public async Task<ActionResult<IEnumerable<TestSession>>> GetTestSessions()
     {
+      _logger.LogInformation("Fetching all test sessions.");
       return await _context.TestSessions.ToListAsync();
     }
 
@@ -27,10 +31,12 @@ namespace LabManagementApp.API.Controllers
     [HttpGet("{id}")]
     public async Task<ActionResult<TestSession>> GetTestSession(Guid id)
     {
+      _logger.LogInformation("Fetching test session with ID: {TestSessionID}", id);
       var testSession = await _context.TestSessions.FindAsync(id);
 
       if (testSession == null)
       {
+        _logger.LogWarning("Test session with ID: {TestSessionID} not found.", id);
         return NotFound();
       }
 

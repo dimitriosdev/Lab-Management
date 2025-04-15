@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace MVVMExample;
+namespace LabManagementApp.UI.WPF;
 
 /// <summary>
 /// Interaction logic for App.xaml
